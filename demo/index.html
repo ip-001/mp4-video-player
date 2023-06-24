@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        background: #fafafa;
+      }
+
+      #demo {
+        max-width: 80%;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo"></div>
+
+    <script type="module">
+      import { html, render } from 'lit';
+      import '../mp4-video-player.js';
+
+      const header = 'Hello owc World!';
+      render(
+        html`
+          <mp4-video-player
+            name="Big Buck Bunny - Demo"
+            src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_30mb.mp4"
+          >
+          </mp4-video-player>
+        `,
+        document.querySelector('#demo')
+      );
+    </script>
+  </body>
+</html>
