@@ -1,27 +1,27 @@
-import { html, css, LitElement } from 'lit';
+import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
 
+import { Mp4VideoPlayerStyles } from './mp4-video-player.styles.js';
+
 export class Mp4VideoPlayer extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-      padding: 25px;
-      color: var(--mp4-video-player-text-color, #000);
-    }
-  `;
+  @property({ type: String })
+  name!: string;
 
-  @property({ type: String }) header = 'Hey there';
-
-  @property({ type: Number }) counter = 5;
-
-  __increment() {
-    this.counter += 1;
-  }
+  @property({ type: String })
+  src!: string;
 
   render() {
     return html`
-      <h2>${this.header} Nr. ${this.counter}!</h2>
-      <button @click=${this.__increment}>increment</button>
+      <video controls controlsList="nodownload">
+        <source src=${this.src} type="video/mp4" />
+      </video>
+
+      <main>
+        <h6>${this.name}</h6>
+        <span>video</span>
+      </main>
     `;
   }
+
+  static styles = Mp4VideoPlayerStyles;
 }
